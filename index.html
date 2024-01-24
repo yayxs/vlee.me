@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vanlee</title>
+    <script>
+      ;(function () {
+        const mediaQueryString = '(prefers-color-scheme: dark)'
+        const prefersDark =
+          window.matchMedia && window.matchMedia(mediaQueryString).matches
+
+        const setting = localStorage.getItem('vueuse-color-scheme') || 'auto'
+
+        if (setting === 'dark' || (setting && setting !== 'light')) {
+          document.documentElement.classList.toggle('dark', true)
+        }
+      })()
+    </script>
+  </head>
+  <body class="font-sans text-gray-700 dark:text-gray-200 relative">
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
