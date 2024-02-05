@@ -6,15 +6,15 @@
     <title>vanlee</title>
     <script>
       ;(function () {
-        const mediaQueryString = '(prefers-color-scheme: dark)'
+        // 判断浏览器是否启用了深色模式
         const prefersDark =
-          window.matchMedia && window.matchMedia(mediaQueryString).matches
-
+          window.matchMedia &&
+          window.matchMedia('(prefers-color-scheme: dark)').matches
+        console.log('判断浏览器是否启用了深色模式', prefersDark)
         const setting = localStorage.getItem('vueuse-color-scheme') || 'auto'
-
-        if (setting === 'dark' || (setting && setting !== 'light')) {
+        console.log('浏览器缓存中存储的模式', setting)
+        if (setting === 'dark' || (prefersDark && setting !== 'light'))
           document.documentElement.classList.toggle('dark', true)
-        }
       })()
     </script>
   </head>

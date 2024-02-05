@@ -7,8 +7,13 @@ export {}
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Footer: typeof import('./src/components/Footer.vue')['default']
+    GitHubRepos: typeof import('./src/components/GitHubRepos.vue')['default']
     NavBar: typeof import('./src/components/NavBar.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    ToggleTheme: typeof import('./src/components/ToggleTheme.vue')['default']
+    WrapperDemo: typeof import('./src/components/WrapperDemo.vue')['default']
+    WrapperPost: typeof import('./src/components/WrapperPost.vue')['default']
   }
 }

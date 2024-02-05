@@ -1,1 +1,4 @@
 node_modules
+*.mjs
+.vite-ssg-temp
+dist

@@ -10,13 +10,8 @@ useEventListener('click', async (e) => {
 
 <template>
   <NavBar />
-  <div class="box">
-    123
-  </div>
+  <main class="px-7 py-10 of-x-hidden">
+    <RouterView />
+    <Footer />
+  </main>
 </template>
-
-<style scoped>
-.box {
-  height: 2000px;
-}
-</style>
