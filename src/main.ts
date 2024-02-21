@@ -10,6 +10,8 @@ import './styles/main.css'
 import './styles/prose.css'
 import './styles/markdown.css'
 
+import './styles/animation.css'
+
 import 'virtual:uno.css'
 
 import autoRoutes from 'pages-generated'

@@ -1,7 +1,18 @@
 import { defineConfig, presetAttributify, presetIcons, presetUno } from 'unocss'
 
 export default defineConfig({
+  rules: [
+    // 动态规则
+    [/^slide-enter-(\d+)$/, ([_, n]) => {
+      console.log(_)
+      console.log(n)
+      return {
+        '--enter-stage': n,
+      }
+    }],
+  ],
   presets: [
+
     presetIcons({
       extraProperties: {
         'display': 'inline-block',

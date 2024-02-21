@@ -2,3 +2,5 @@ node_modules
 *.mjs
 .vite-ssg-temp
 dist
+components.d.ts
+auto-imports.d.ts

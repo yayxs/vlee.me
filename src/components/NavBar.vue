@@ -26,6 +26,10 @@ const { y: scroll } = useWindowScroll()
           <span class="lt-md:hidden">Blog</span>
           <div i-ri-article-line md:hidden />
         </RouterLink>
+        <RouterLink to="/projects" title="Projects">
+          <span class="lt-md:hidden">Projects</span>
+          <div i-ri-lightbulb-line class="md:hidden" />
+        </RouterLink>
         <RouterLink to="/learning" title="Learning">
           <span class="lt-md:hidden">Learning</span>
           <div eos-icons:machine-learning-outlined class="md:hidden" />
