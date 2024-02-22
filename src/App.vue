@@ -10,7 +10,7 @@ useEventListener('click', async (e) => {
 
 <template>
   <NavBar />
-  <main class="px-7 py-10 of-x-hidden">
+  <main class="px-2 py-10 of-x-hidden">
     <RouterView />
     <Footer />
   </main>

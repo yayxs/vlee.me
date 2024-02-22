@@ -24,6 +24,10 @@ import anchor from 'markdown-it-anchor'
 import MarkdownItShikiji from 'markdown-it-shikiji'
 import { rendererRich, transformerTwoslash } from 'shikiji-twoslash'
 import LinkAttributes from 'markdown-it-link-attributes'
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
+import { viteMockServe } from 'vite-plugin-mock'
+
+// import proxy from 'http-proxy-middleware'
 import { slugify } from './scripts/slugify'
 
 export default defineConfig({
@@ -42,7 +46,20 @@ export default defineConfig({
       'dayjs/plugin/localizedFormat',
     ],
   },
+  server: {
+    cors: true,
+    proxy: {
+      '/github-api': {
+        target: 'https://github.com',
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/github-api/, ''),
+      },
+    },
+  },
   plugins: [
+    // 通过插件 填充 Node 浏览器环境的核心模块
+    // @see https://vitejs.dev/guide/troubleshooting.html#module-externalized-for-browser-compatibility
+    nodePolyfills(),
 
     UnoCSS(),
 
@@ -89,11 +106,15 @@ export default defineConfig({
 
     Markdown({
       wrapperComponent: (id) => {
-        console.log('id is=======', id)
-
-        return id.includes('/demo/')
-          ? 'WrapperDemo'
-          : 'WrapperPost'
+        // 其中id的值是xxx/vlee.me/pages/html-learn.md 这种格式
+        if (id.includes('-learn')) {
+          return 'WrapperLearn'
+        }
+        else {
+          return id.includes('/demo/')
+            ? 'WrapperDemo'
+            : 'WrapperPost'
+        }
       },
       wrapperClasses: (id, code) => code.includes('@layout-full-width')
         ? ''
@@ -169,6 +190,12 @@ export default defineConfig({
     Icons({
       defaultClass: 'inline',
       defaultStyle: 'vertical-align: sub;',
+    }),
+
+    viteMockServe({
+      mockPath: 'mock',
+      enable: true,
+      logger: true,
     }),
   ],
 })

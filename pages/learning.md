@@ -1,5 +1,5 @@
 ---
-title: Learning -
+title: Learning
 display: Learning
 subtitle:
 description:
@@ -7,4 +7,4 @@ description:
 
 <!-- @layout-full-width -->
 
-<GitHubRepos />
+<ListLearn />
