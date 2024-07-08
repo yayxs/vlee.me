@@ -1,17 +1,5 @@
-<script setup lang="ts">
-const route = useRoute()
-
-const imageModel = ref<HTMLImageElement>()
-
-useEventListener('click', async (e) => {
-  const path = Array.from(e.composedPath())
-})
-</script>
-
 <template>
-  <NavBar />
-  <main class="px-2 py-10 of-x-hidden">
-    <RouterView />
-    <Footer />
-  </main>
+  <div>
+    123
+  </div>
 </template>
